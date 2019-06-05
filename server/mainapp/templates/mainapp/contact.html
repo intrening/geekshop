@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="logo" src="/static/img/logo.png">
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Главная</a><br></li>
+                <li><a href="{% url 'products' %}">Каталог</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <hr>
+
+            <h1>Контакты</h1>
+            <h2>Обратная связь</h2>
+
+            <form action="" method="get" class="form">
+                Ваше имя: <input type="text" placeholder="Введите имя..."><br>
+                Ваш email: <input type="email" placeholder="Введите емайл..."><br>
+                Уже покупали что-то у нас?<br>
+                <input type="radio" name="pol"> ДА <input type="radio" name="pol" checked> НЕТ<br>
+                Сообщение:<br>
+                <textarea></textarea><br>
+                На какую тематику вы хотите получать рассылки от нас:<br>
+                <input type="checkbox">Новости компании<br>
+                <input type="checkbox">Поступления новых товаров<br>
+                <input type="submit" value='Отправить'>
+            </form>
+
+            <h2>Наш адрес</h2>
+            Приезжайте к нам на плантацию мандаринов и кофе:<BR>
+
+            <img src="static/img/map.png" class="map">
+        </div>
+        <hr>
+    </div>
+    <div class="footer">
+        &copy; Все права защищены
+    </div>
+    </div>
+</body>
+
+</html>

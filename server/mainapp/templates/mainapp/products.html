@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Каталог</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="logo" src="/static/img/logo.png">
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Главная</a><br></li>
+                <li><a href="{% url 'products' %}">Каталог</a></li>
+                <li><a href="{% url 'contact' %}">Контакты</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <hr>
+            <h1>Каталог</h1>
+
+            <div class="catalog_el">
+                <div class="catalog_el_img">
+                    <a href="catalog/good01.html">
+                        <img src="/static/img/good01.jpg" class="catalog_img">
+                    </a>
+                </div>
+                <div class="catalog_el_link">
+                    <a href="catalog/good01.html">Кружка заварочная Walmer Arabica, W24000902, с функцией помола кофе,
+                        350
+                        мл</a>
+                </div>
+            </div>
+
+            <div class="catalog_el">
+                <div class="catalog_el_img">
+                    <a href="catalog/good02.html">
+                        <img src="/static/img/good02.jpg" class="catalog_img">
+                    </a>
+                </div>
+                <div class="catalog_el_link">
+                    <a href="catalog/good02.html">Турка PROFFI электрическая, с сенсорным управлением и функцией
+                        автоотключения</a>
+                </div>
+            </div>
+
+            <hr>
+        </div>
+        <div class="footer">
+            &copy; Все права защищены
+        </div>
+    </div>
+</body>
+
+</html>
