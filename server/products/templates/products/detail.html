@@ -1,0 +1,19 @@
+{% extends "mainapp/base.html" %}
+{% load staticfiles %}
+{% block content %}
+        <div class="content">
+            <hr>
+            <h1>{{ product.name }}</h1>
+            <div class="catalog_el">
+                <div class="catalog_el_img">
+                    <a href="{{ product.link }}">
+                        <img src="{{ product.src }}" class="catalog_img">
+                    </a>
+                </div>
+                <div class="catalog_el_link">
+                    <a href="{{ product.link }}">{{ product.about}}</a>
+                </div>
+            </div>
+            <hr>
+        
+{% endblock content %}

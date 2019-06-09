@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "mainapp/base.html" %}
+{% load staticfiles %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Контакты</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-
-<body>
-    <div class="container">
-        <div class="header">
-            <img class="logo" src="/static/img/logo.png">
-            <ul class="menu">
-                <li><a href="{% url 'index' %}">Главная</a><br></li>
-                <li><a href="{% url 'products' %}">Каталог</a></li>
-                <li><a href="{% url 'contact' %}">Контакты</a></li>
-            </ul>
-        </div>
         <div class="content">
             <hr>
 
@@ -41,14 +24,7 @@
             <h2>Наш адрес</h2>
             Приезжайте к нам на плантацию мандаринов и кофе:<BR>
 
-            <img src="static/img/map.png" class="map">
+            <img src="/static/img/map.png" class="map">
         </div>
-        <hr>
-    </div>
-    <div class="footer">
-        &copy; Все права защищены
-    </div>
-    </div>
-</body>
-
-</html>
+        <hr>  
+{% endblock content %}

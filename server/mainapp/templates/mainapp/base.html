@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+       <title>{% block title %}
+              {{ title|title }}
+              {% endblock %}</title>
+       <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+       <div class="container">
+              {% include "mainapp/includes/inc_menu.html" %}
+
+              {% block content %}
+              {% endblock %}
+              
+              {% block footer %}
+              <div class="footer">
+                     &copy; Все права защищены {% now "Y" %}
+              </div>
+              {% endblock %}
+       </div>
+</body>
+
+</html>
