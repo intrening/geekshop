@@ -1,18 +1,23 @@
 {% extends "mainapp/base.html" %}
 {% load staticfiles %}
 {% block content %}
+
         <div class="content">
             <hr>
             <h1>{{ product.name }}</h1>
+            <p>{{ product.short_desc }}</p>
             <div class="catalog_el">
                 <div class="catalog_el_img">
                     <a href="{{ product.link }}">
-                        <img src="{{ product.src }}" class="catalog_img">
+                        <img src="/media/{{ product.image }}" class="catalog_img">
                     </a>
                 </div>
                 <div class="catalog_el_link">
                     <a href="{{ product.link }}">{{ product.about}}</a>
                 </div>
+                <p>{{ product.description }}</p>
+                <h2>Цена: {{ product.price }}</h2>
+                <p>Количество: {{ product.quantity }}</p>
             </div>
             <hr>
         

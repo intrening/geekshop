@@ -1,22 +1,29 @@
 {% extends "mainapp/base.html" %}
 {% load staticfiles %}
 {% block content %}
-        <div class="content">
-            <hr>
-            <h1>Продукты</h1>
+<div class="content">
+    <hr>
+    <ul class="menu">
+        {% for category in categorys %}
+        <li>
+            <a href="{% url 'products:category_detail' pk=category.id %}">
+                {{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h1>{{title}}</h1>
 
-            {% for product in products %}
-            <div class="catalog_el">
-                <div class="catalog_el_img">
-                    <a href="{% url 'products:detail' pk=forloop.counter0 %}">
-                        <img src="{{ product.src}}" class="catalog_img">
-                    </a>
-                </div>
-                <div class="catalog_el_link">
-                    <a href="{% url 'products:detail' pk=forloop.counter0 %}">{{ product.about}}</a>
-                </div>
-            </div>
-            {% endfor %}
-            <hr>
-        
-{% endblock content %}
+    {% for product in products %}
+    <div class="block">
+        <img src="/media/{{ product.image }}" width=50% alt="{{ product.short_desc }}">
+        <div class="text">
+            <a href="{% url 'products:detail' pk=product.id %}">
+                <h4>{{ product.name }}</h4>
+            </a>
+            <p>{{ product.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <hr>
+
+    {% endblock content %}
