@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 from products.models import Product, ProductCategory
-
+from .forms import ProductForm
+from django.urls import reverse
 # Create your views here.
 
 def product_list(request):
@@ -29,3 +30,17 @@ def category_detail (request,pk):
         'categorys': [category],
         'title': category.name
         })
+
+
+def addProduct(request):
+	if request.POST:
+		form = ProductForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect (
+				reverse('products:index')
+			)
+	form = ProductForm()
+	return render (request, 'products/add.html', {
+		'form': form
+	})

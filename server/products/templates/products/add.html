@@ -1,0 +1,16 @@
+{% extends "mainapp/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <input type="submit">
+</form>
+
+        
+{% endblock content %}
