@@ -3,7 +3,8 @@
         <img class="logo" src="{% static 'img/logo.png' %}" alt="logo">
         <ul class="menu">
                <li><a href="{% url 'index' %}">Главная</a><br></li>
-               <li><a href="{% url 'products:index' %}">Каталог</a></li>
+               <li><a href="{% url 'products:index' %}">Продукты</a></li>
+               <li><a href="{% url 'products:category_list' %}">Категории</a></li>
                <li><a href="{% url 'contact' %}">Контакты</a></li>
         </ul>
  </div>

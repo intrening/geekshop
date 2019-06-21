@@ -2,12 +2,16 @@
 {% load staticfiles %}
 {% block content %}
 <div class="content">
-    <a href="{% url 'products:add' %}">Добавить товар</a>
+    <a href="{% url 'products:add' %}">Добавить продукт</a>
     <hr>
-    <ul class="menu">
-        {% for category in categorys %}
+    <ul class="menu2">
+        Категории:
         <li>
-            <a href="{% url 'products:category_detail' pk=category.id %}">
+            <a href="?">Все продукты</a>
+        </li>
+        {% for category in categories %}
+        <li>
+            <a href="?category={{ category.id }}">
                 {{ category.name }}</a>
         </li>
         {% endfor %}
