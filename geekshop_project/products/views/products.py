@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from products.models import Product, ProductCategory
@@ -26,7 +26,7 @@ def product_detail (request,pk):
     return render(request, 'products/detail.html', {
         'product':product})
 
-def addProduct(request):
+def product_add (request):
 	if request.POST:
 		form = ProductForm(request.POST)
 		if form.is_valid():
@@ -38,3 +38,30 @@ def addProduct(request):
 	return render (request, 'products/add.html', {
 		'form': form
 	})
+
+def product_update (request,pk):
+	obj = get_object_or_404(Product, pk=pk)
+	form = ProductForm (instance=obj)
+	if request.POST:
+		form = ProductForm(request.POST,instance=obj)
+		if form.is_valid():
+			form.save()
+			return redirect (
+				reverse('products:index')
+			)
+	return render (request, 'products/update.html', {
+		'form': form
+	})
+
+def product_delele (request,pk):
+	obj = get_object_or_404(Product, pk=pk)
+	if request.method == 'POST':
+		obj.delete()
+		return redirect(
+			reverse('products:index')
+			)
+	return render (request,
+		'products/delete.html',{
+			'object': obj 
+		}
+	)

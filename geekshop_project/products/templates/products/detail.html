@@ -18,6 +18,9 @@
                 <p>{{ product.description }}</p>
                 <h2>Цена: {{ product.price }}</h2>
                 <p>Количество: {{ product.quantity }}</p>
+                <a href="{% url 'products:update' pk=product.id %}">Обновить</a>
+                <a href="{% url 'products:delete' pk=product.id %}">Удалить</a>
+
             </div>
             <hr>
         
