@@ -6,7 +6,6 @@
     <form method="POST" action="">
         Категория <b>{{ object.name }}</b> будет удалена, вы уверены?
         {% csrf_token %}
-
         <input type="submit">
     </form>
 </div>

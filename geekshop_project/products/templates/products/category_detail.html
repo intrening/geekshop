@@ -4,10 +4,11 @@
 
         <div class="content">
             <hr>
-            <h1>{{ category.name }}</h1>
-            <p>{{ category.description }}</p>
-            <a href="{% url 'products:category_update' pk=category.id %}">Обновить</a>
-            <a href="{% url 'products:category_delete' pk=category.id %}">Удалить   </a>
+            <h1>{{ object.name }}</h1>
+            <p>{{ object.description }}</p>
+            <a href="{% url 'products:category_update' pk=object.id %}">Обновить</a>
+            <a href="{% url 'products:category_delete' pk=object.id %}">Удалить   </a>
+       
             <hr>
         
 {% endblock content %}

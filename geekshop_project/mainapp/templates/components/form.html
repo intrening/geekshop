@@ -1,0 +1,9 @@
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <input type="submit">
+</form>

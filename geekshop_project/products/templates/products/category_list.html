@@ -5,7 +5,7 @@
     <a href="{% url 'products:category_add' %}">Добавить категорию</a>
     <hr>
     <h1>Категории</h1>
-    {% for category in categories %}
+    {% for category in object_list %}
     <div class="block">
         <div class="text">
             <a href="{% url 'products:category_detail' pk=category.id %}">

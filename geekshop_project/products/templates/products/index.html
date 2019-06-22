@@ -4,21 +4,9 @@
 <div class="content">
     <a href="{% url 'products:add' %}">Добавить продукт</a>
     <hr>
-    <ul class="menu2">
-        Категории:
-        <li>
-            <a href="?">Все продукты</a>
-        </li>
-        {% for category in categories %}
-        <li>
-            <a href="?category={{ category.id }}">
-                {{ category.name }}</a>
-        </li>
-        {% endfor %}
-    </ul>
     <h1>{{title}}</h1>
 
-    {% for product in products %}
+    {% for product in object_list %}
     <div class="block">
         <img src="/media/{{ product.image }}" width=50% alt="{{ product.short_desc }}">
         <div class="text">
