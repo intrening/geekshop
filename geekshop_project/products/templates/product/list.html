@@ -6,7 +6,7 @@
     <hr>
     <h1>{{title}}</h1>
 
-    {% for product in object_list %}
+    {% for product in page %}
     <div class="block">
         <img src="/media/{{ product.image }}" width=50% alt="{{ product.short_desc }}">
         <div class="text">

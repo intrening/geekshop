@@ -10,29 +10,29 @@ from django.views.generic import (
 
 class CategoryList (ListView):
     model = ProductCategory
-    template_name = 'products/category_list.html'
+    template_name = 'category/list.html'
 
 class CategoryDetail (DetailView):
     model = ProductCategory
-    template_name = 'products/category_detail.html'
+    template_name = 'category/detail.html'
 
 
 class CategoryCreate (CreateView):
     model = ProductCategory
-    template_name = 'products/category_add.html'
+    template_name = 'category/add.html'
     form_class = CategoryForm
-    success_url = reverse_lazy('products:category_list')
+    success_url = reverse_lazy('category:list')
 
 class CategoryUpdate (UpdateView):
     model = ProductCategory
-    template_name = 'products/category_update.html'
+    template_name = 'category/update.html'
     fields = ['name','description']
-    success_url = reverse_lazy('products:category_list')
+    success_url = reverse_lazy('category:list')
 
 class CategoryDelete (DeleteView):
     model = ProductCategory
-    template_name = 'products/category_delete.html'
-    success_url = reverse_lazy('products:category_list')
+    template_name = 'category/delete.html'
+    success_url = reverse_lazy('category:list')
 
 
 # def category_add (request):

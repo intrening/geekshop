@@ -6,8 +6,8 @@
             <hr>
             <h1>{{ object.name }}</h1>
             <p>{{ object.description }}</p>
-            <a href="{% url 'products:category_update' pk=object.id %}">Обновить</a>
-            <a href="{% url 'products:category_delete' pk=object.id %}">Удалить   </a>
+            <a href="{% url 'category:update' pk=object.id %}">Обновить</a>
+            <a href="{% url 'category:delete' pk=object.id %}">Удалить   </a>
        
             <hr>
         

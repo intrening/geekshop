@@ -2,13 +2,13 @@
 {% load staticfiles %}
 {% block content %}
 <div class="content">
-    <a href="{% url 'products:category_add' %}">Добавить категорию</a>
+    <a href="{% url 'category:add' %}">Добавить категорию</a>
     <hr>
     <h1>Категории</h1>
     {% for category in object_list %}
     <div class="block">
         <div class="text">
-            <a href="{% url 'products:category_detail' pk=category.id %}">
+            <a href="{% url 'category:detail' pk=category.id %}">
                 <h4>{{ category.name }}</h4>
             </a>
             <p>{{ category.description }}</p>

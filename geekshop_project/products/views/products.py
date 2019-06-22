@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
+from django.core.paginator import Paginator
 
 from products.models import Product, ProductCategory
 from products.forms import ProductForm
@@ -9,29 +10,37 @@ from django.views.generic import (
 )
 
 class ProductList (ListView):
+	template_name = 'product/list.html'
 	model = Product
-	template_name = 'products/index.html'
+	def get_context_data(self, **kwargs):
+		context = super (ProductList, self).get_context_data(**kwargs)
+		paginator = Paginator (context.get('object_list'), 1)
+		page_number = self.request.GET.get('page')
+		context['page'] = paginator.get_page(page_number)
+		return context
+		
 
 class ProductDetail (DetailView):
 	model = Product
-	template_name = 'products/detail.html'
+	template_name = 'product/detail.html'
+	
 
 class ProductDelete (DeleteView):
 	model = Product
-	template_name = 'products/delete.html'
+	template_name = 'product/delete.html'
 	success_url = reverse_lazy('products:index')
 
 class ProductCreate (CreateView):
-    model = Product
-    template_name = 'products/add.html'
-    form_class = ProductForm
-    success_url = reverse_lazy('products:index')
+	model = Product
+	template_name = 'product/add.html'
+	form_class = ProductForm
+	success_url = reverse_lazy('products:index')
 
 class ProductUpdate (UpdateView):
-    model = Product
-    template_name = 'products/update.html'
-    fields = ['name','category','description','image','price','quantity']
-    success_url = reverse_lazy('products:index')
+	model = Product
+	template_name = 'product/update.html'
+	fields = ['name','category','description','image','price','quantity']
+	success_url = reverse_lazy('products:index')
 
 # def product_list(request):
 # 	categories = ProductCategory.objects.all()

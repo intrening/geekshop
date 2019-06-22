@@ -8,6 +8,7 @@ import mainapp.views as mainapp
 urlpatterns = [
     path('', mainapp.main, name='index'),
     path('products/', include('products.urls', namespace='products')),
+    path('category/', include('products.urls.category', namespace='category')),
     path('contact/', mainapp.contact, name='contact'),
     path('admin/', admin.site.urls),
 ]
