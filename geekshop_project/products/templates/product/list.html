@@ -6,7 +6,7 @@
     <hr>
     <h1>{{title}}</h1>
 
-    {% for product in page %}
+    {% for product in object_list %}
     <div class="block">
         <img src="/media/{{ product.image }}" width=50% alt="{{ product.short_desc }}">
         <div class="text">
@@ -17,6 +17,7 @@
         </div>
     </div>
     {% endfor %}
+    {% include "components/pagination.html" with page=page_obj %}
     <hr>
 
     {% endblock content %}

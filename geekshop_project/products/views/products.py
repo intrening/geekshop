@@ -12,12 +12,13 @@ from django.views.generic import (
 class ProductList (ListView):
 	template_name = 'product/list.html'
 	model = Product
-	def get_context_data(self, **kwargs):
-		context = super (ProductList, self).get_context_data(**kwargs)
-		paginator = Paginator (context.get('object_list'), 1)
-		page_number = self.request.GET.get('page')
-		context['page'] = paginator.get_page(page_number)
-		return context
+	paginate_by = 2
+		# def get_context_data(self, **kwargs):
+	# 	context = super (ProductList, self).get_context_data(**kwargs)
+	# 	paginator = Paginator (context.get('object_list'), 1)
+	# 	page_number = self.request.GET.get('page')
+	# 	context['page'] = paginator.get_page(page_number)
+	# 	return context
 		
 
 class ProductDetail (DetailView):
