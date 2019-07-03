@@ -29,19 +29,19 @@ class ProductDetail (DetailView):
 class ProductDelete (DeleteView):
 	model = Product
 	template_name = 'product/delete.html'
-	success_url = reverse_lazy('products:index')
+	success_url = reverse_lazy('product:list')
 
 class ProductCreate (CreateView):
 	model = Product
 	template_name = 'product/add.html'
 	form_class = ProductForm
-	success_url = reverse_lazy('products:index')
+	success_url = reverse_lazy('product:list')
 
 class ProductUpdate (UpdateView):
 	model = Product
 	template_name = 'product/update.html'
 	fields = ['name','category','description','image','price','quantity']
-	success_url = reverse_lazy('products:index')
+	success_url = reverse_lazy('product:list')
 
 # def product_list(request):
 # 	categories = ProductCategory.objects.all()

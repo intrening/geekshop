@@ -1,0 +1,29 @@
+<div class="catalog_el">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.short_desc }}</p>
+    <div class="catalog_el_img">
+        <a href="{% url 'products:detail' pk=product.id %}" >
+            <img src="/media/{{ product.image }}" class="catalog_img">
+        </a>
+    </div>
+    <div class="catalog_el_link">
+        <a href="{{ product.link }}">{{ product.about}}</a>
+    </div>
+    <p>{{ product.description }}</p>
+    <h2>Цена: {{ product.price }}</h2>
+    <p>Количество: {{ product.quantity }}</p>
+    <a href="{% url 'products:update' pk=product.id %}">Обновить</a>
+    <a href="{% url 'products:delete' pk=product.id %}">Удалить</a>
+</div>
+
+<!-- {% for product in products %}
+            <div class="block">
+                <img src="/media/{{ product.image }}" width=50% alt="{{ product.short_desc }}">
+                <div class="text">
+                    <a href="{% url 'products:detail' pk=product.id %}">
+                        <h4>{{ product.name }}</h4>
+                    </a>
+                    <p>{{ product.description }}</p>
+                </div>
+            </div>
+            {% endfor %} -->

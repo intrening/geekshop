@@ -2,13 +2,22 @@
 {% load staticfiles %}
 {% block content %}
 
-        <div class="content">
-            <hr>
-            <h1>{{ object.name }}</h1>
-            <p>{{ object.description }}</p>
-            <a href="{% url 'category:update' pk=object.id %}">Обновить</a>
-            <a href="{% url 'category:delete' pk=object.id %}">Удалить   </a>
-       
-            <hr>
-        
+<div class="content">
+    <hr>
+    <h1>{{ object.name }}</h1>
+    <p>{{ object.description }}</p>
+    <a href="{% url 'category:update' pk=object.id %}">Обновить</a>
+    <a href="{% url 'category:delete' pk=object.id %}">Удалить </a>
+
+    {% for product in object.product_set.all %}
+        {% include "components/product_item.html" with product=product %}
+    {% endfor %}
+
+    {% include "components/pagination.html" with page=page_obj %}
+
+</div>
+
+<hr>
+
+
 {% endblock content %}

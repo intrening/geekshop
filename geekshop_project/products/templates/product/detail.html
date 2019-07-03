@@ -2,26 +2,10 @@
 {% load staticfiles %}
 {% block content %}
 
-        <div class="content">
-            <hr>
-            <h1>{{ product.name }}</h1>
-            <p>{{ product.short_desc }}</p>
-            <div class="catalog_el">
-                <div class="catalog_el_img">
-                    <a href="{{ product.link }}">
-                        <img src="/media/{{ product.image }}" class="catalog_img">
-                    </a>
-                </div>
-                <div class="catalog_el_link">
-                    <a href="{{ product.link }}">{{ product.about}}</a>
-                </div>
-                <p>{{ product.description }}</p>
-                <h2>Цена: {{ product.price }}</h2>
-                <p>Количество: {{ product.quantity }}</p>
-                <a href="{% url 'products:update' pk=product.id %}">Обновить</a>
-                <a href="{% url 'products:delete' pk=product.id %}">Удалить</a>
+<hr>
+<div class="content">
+    {% include "components/product_item.html" with product=product %}
+</div>
+<hr>
 
-            </div>
-            <hr>
-        
 {% endblock content %}
