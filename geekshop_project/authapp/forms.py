@@ -5,5 +5,6 @@ class LoginForm(forms.Form):
         max_length=128, required=True
     )
     password = forms.CharField(
-        max_length=72, required=True
+        max_length=72, required=True,
+        widget=forms.widgets.PasswordInput()
     )
