@@ -18,3 +18,8 @@ urlpatterns = [
     path('<int:pk>/delete/', CategoryDelete.as_view(), name='delete'),
 ]
 
+rest_urlpatterns = [
+    path('api/list/', RestCategoryListView.as_view(), name='rest_list')
+]
+
+urlpatterns += rest_urlpatterns

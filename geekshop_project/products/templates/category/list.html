@@ -5,16 +5,25 @@
     <a href="{% url 'category:add' %}">Добавить категорию</a>
     <hr>
     <h1>Категории</h1>
-    {% for category in object_list %}
-    <div class="block">
-        <div class="text">
-            <a href="{% url 'category:detail' pk=category.id %}">
-                <h4>{{ category.name }}</h4>
-            </a>
-            <p>{{ category.description }}</p>
-        </div>
+    <div class="category-list">
     </div>
-    {% endfor %}
+    
+    
+    <script>
+        const render_category = ({id, name}) => {
+            `<div>${ name } <a href='/${ id }'>Перейти</a></div>`
+        };
+        container = document.querySelector('.category-list');
+        
+        fetch ('/category/api/list')
+            .then (response => response.json())
+            .then (data => {
+                console.log (data)
+                data.results.map(
+                    itm => container.innerHtml += render_category({id:itm.id,name:itm.name})
+                )
+            });
+    </script>
     <hr>
 
     {% endblock content %}

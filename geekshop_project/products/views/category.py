@@ -10,6 +10,24 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
 	CreateView, UpdateView, DeleteView, ListView, DetailView
 )
+from django.core.serializers import serialize
+from django.http import JsonResponse
+import json
+
+class RestCategoryListView(ListView):
+    model = ProductCategory
+    def get_context_data(self, **kwargs):
+        context = super(RestCategoryListView, self).get_context_data(**kwargs)
+        object_list = context.get('object_list')
+
+        return {
+            'results':json.loads(serialize('json', object_list, fields=('name')))
+        }
+
+    def render_to_response(self, context, **response_kwargs):
+        return JsonResponse(context)
+        #  super().render_to_response(context, **response_kwargs)
+
 
 class CategoryList (ListView):
     model = ProductCategory
