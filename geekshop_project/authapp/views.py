@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-from .forms import LoginForm
+from .forms import (
+    LoginForm,RegistrationForm
+)
 from django.contrib.auth.views import (
-    LoginView, LogoutView
+    LoginView, LogoutView, FormView
 )
 
 class authLoginView(LoginView):
@@ -12,6 +14,9 @@ class authLoginView(LoginView):
 class authLogoutView(LogoutView):
     template_name = 'authapp/logout.html'
     
+class authRegistrationView(FormView):
+    template_name = 'authapp/registration.html'
+    form_class = RegistrationForm
 
 
 # Create your views here.
