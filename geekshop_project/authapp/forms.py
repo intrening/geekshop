@@ -21,3 +21,11 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             'password': forms.widgets.PasswordInput(),
         }
+
+    def clean_password_confirm(self):
+        password = self.changed_data.get('password')
+        password = self.changed_data.get('password_confirm')
+
+        if password != password_confirm:
+            raise forms.ValidationError('Password is not confirmed.')
+        return password_confirm

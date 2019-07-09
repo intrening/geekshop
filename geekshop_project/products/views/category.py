@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 from products.models import Product, ProductCategory
 from products.forms import CategoryForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 from django.views.generic import (
 	CreateView, UpdateView, DeleteView, ListView, DetailView
 )
@@ -27,22 +29,27 @@ class CategoryDetail (DetailView):
         return context
 
 
-class CategoryCreate (CreateView):
+class CategoryCreate (UserPassesTestMixin, LoginRequiredMixin, CreateView):
     model = ProductCategory
     template_name = 'category/add.html'
     form_class = CategoryForm
     success_url = reverse_lazy('category:list')
 
-class CategoryUpdate (UpdateView):
+class CategoryUpdate (UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = ProductCategory
     template_name = 'category/update.html'
     fields = ['name','description']
     success_url = reverse_lazy('category:list')
 
-class CategoryDelete (DeleteView):
+class CategoryDelete (UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     model = ProductCategory
     template_name = 'category/delete.html'
     success_url = reverse_lazy('category:list')
+
+    def test_func(self):
+        user = self.request.user
+        user.has_perm('products.can_delete')
+        return super().test_func()
 
 
 # def category_add (request):

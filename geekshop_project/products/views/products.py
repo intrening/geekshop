@@ -5,9 +5,12 @@ from django.core.paginator import Paginator
 from products.models import Product, ProductCategory
 from products.forms import ProductForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 from django.views.generic import (
 	CreateView, UpdateView, DeleteView, ListView, DetailView
 )
+
 
 class ProductList (ListView):
 	template_name = 'product/list.html'
@@ -26,22 +29,25 @@ class ProductDetail (DetailView):
 	template_name = 'product/detail.html'
 	
 
-class ProductDelete (DeleteView):
+class ProductDelete (UserPassesTestMixin, LoginRequiredMixin,DeleteView):
 	model = Product
 	template_name = 'product/delete.html'
 	success_url = reverse_lazy('product:list')
+	login_url = reverse_lazy('authapp:login')
 
-class ProductCreate (CreateView):
+class ProductCreate (UserPassesTestMixin, LoginRequiredMixin,CreateView):
 	model = Product
 	template_name = 'product/add.html'
 	form_class = ProductForm
 	success_url = reverse_lazy('product:list')
+	login_url = reverse_lazy('authapp:login')
 
-class ProductUpdate (UpdateView):
+class ProductUpdate (UserPassesTestMixin, LoginRequiredMixin, UpdateView):
 	model = Product
 	template_name = 'product/update.html'
 	fields = ['name','category','description','image','price','quantity']
 	success_url = reverse_lazy('product:list')
+	login_url = reverse_lazy('authapp:login')
 
 # def product_list(request):
 # 	categories = ProductCategory.objects.all()

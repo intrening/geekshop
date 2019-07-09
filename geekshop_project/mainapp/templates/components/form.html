@@ -1,8 +1,15 @@
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}
-    <div>
+
+    {% for err in form.not_field_errors %}
+    <h1>{{ err }}</h1>
+    {% endfor %}
+    <div>   
         {{ field }}
+        {% for err in field.errors %}
+        <h2>{{ err }}</h2>
+        {% endfor %}
     </div>
     {% endfor %}
     <input type="submit">
