@@ -1,16 +1,12 @@
 from django.urls import path
 
-from products.views import *
+from products.views import (
+    CategoryList, CategoryCreate, CategoryUpdate, CategoryDelete, CategoryDetail
+)
 
 app_name = 'category'
 
 urlpatterns = [
-    # path('', ProductList.as_view(), name='index'),
-    # path('add/', ProductCreate.as_view(), name='add'),
-    # path('<int:pk>/', ProductDetail.as_view(), name='detail'),
-    # path('<int:pk>/update', ProductUpdate.as_view(), name='update'),
-    # path('<int:pk>/delete', ProductDelete.as_view(), name='delete'),
-
     path('', CategoryList.as_view(), name='list'),
     path('add/', CategoryCreate.as_view(), name='add'),
     path('<int:pk>/', CategoryDetail.as_view(), name='detail'),
@@ -18,8 +14,8 @@ urlpatterns = [
     path('<int:pk>/delete/', CategoryDelete.as_view(), name='delete'),
 ]
 
-rest_urlpatterns = [
-    path('api/list/', RestCategoryListView.as_view(), name='rest_list')
-]
+# rest_urlpatterns = [
+#     path('api/list/', RestCategoryListView.as_view(), name='rest_list')
+# ]
 
-urlpatterns += rest_urlpatterns
+# urlpatterns += rest_urlpatterns

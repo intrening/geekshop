@@ -6,24 +6,14 @@
     <hr>
     <h1>Категории</h1>
     <div class="category-list">
+        {% for category in object_list %}
+            <h3>{{ category.name }}</h3>
+            <p>
+                {{ category.description }}
+            </p>
+            <a href='{% url "category:detail" pk=category.id %}'>Перейти</a>
+        {% endfor %}
     </div>
-    
-    
-    <script>
-        const render_category = ({id, name}) => {
-            `<div>${ name } <a href='/${ id }'>Перейти</a></div>`
-        };
-        container = document.querySelector('.category-list');
-        
-        fetch ('/category/api/list')
-            .then (response => response.json())
-            .then (data => {
-                console.log (data)
-                data.results.map(
-                    itm => container.innerHtml += render_category({id:itm.id,name:itm.name})
-                )
-            });
-    </script>
     <hr>
 
     {% endblock content %}

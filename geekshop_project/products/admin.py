@@ -1,19 +1,19 @@
 from django.contrib import admin
+from django.template.loader import render_to_string
 
 from .models import ProductCategory, Product
-from django.template.loader import render_to_string
 
 @admin.register(ProductCategory)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'modified', 'created')
-    list_filter = ('modified','created')
-    search_fields = ('name','description')
+    list_filter = ('modified', 'created')
+    search_fields = ('name', 'description')
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'name', 'picture','category','price', 'quantity',
+        'name', 'picture', 'category', 'price', 'quantity',
         'modified', 'created'
         )
 
@@ -25,7 +25,7 @@ class ProductAdmin(admin.ModelAdmin):
             }
         )
 
-    list_filter = ('category', 'modified','created')
+    list_filter = ('category', 'modified', 'created')
     # search_fields = ('name','description')
     # pass
 

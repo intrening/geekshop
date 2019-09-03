@@ -2,13 +2,8 @@
 {% load staticfiles %}
 {% block content %}
 <div class='content'>
-    <h1>Удалить продукт?</h1>
-    <form method="POST" action="">
-        Продукт <b>{{ object.name }}</b> будет удален, вы уверены?
-        {% csrf_token %}
-
-        <input type="submit">
-    </form>
+    <h1>Удалить продукт {{ object.name }}?</h1>
+    {% include "components/form.html" with button_name="Удалить" %}
 </div>
 
 {% endblock content %}

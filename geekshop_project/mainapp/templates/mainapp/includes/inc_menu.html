@@ -1,10 +1,17 @@
 {% load staticfiles %}
 <div class="header">
-        <img class="logo" src="{% static 'img/logo.png' %}" alt="logo">
-        <ul class="menu">
-               <li><a href="{% url 'contact' %}">Контакты</a></li>
-               <li><a href="{% url 'product:list' %}">Продукты</a></li>
-               <li><a href="{% url 'category:list' %}">Категории</a></li>
-               <li><a href="{% url 'index' %}">Главная</a><br></li>
-        </ul>
- </div>
+       <img class="logo" src="{% static 'img/logo.png' %}" alt="logo">
+       <ul class="menu">
+              <li><a href="{% url 'contact' %}">Контакты</a></li>
+              <li><a href="{% url 'product:list' %}">Продукты</a></li>
+              <li><a href="{% url 'category:list' %}">Категории</a></li>
+              <li><a href="{% url 'index' %}">Главная</a><br></li>
+       </ul>
+       <ul class="menu">
+              {% if user.is_authenticated %}
+              <li> Вы вошли как {{ user.email }} <a href="{% url 'authapp:logout' %}">Выйти...</a></li>
+              {% else %}
+              <li> Вы неавторизованы... <a href="{% url 'authapp:login' %}">Войти...</a> или <a href="{% url 'authapp:registration' %}">Зарегистрироваться...</a></li>
+              {% endif %}
+       </ul>
+</div>
