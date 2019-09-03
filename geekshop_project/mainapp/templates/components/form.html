@@ -1,16 +1,9 @@
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" class="user">
     {% csrf_token %}
-    {% for field in form %}
-
-    {% for err in form.not_field_errors %}
-    <h1>{{ err }}</h1>
-    {% endfor %}
-    <div>   
-        {{ field }}
-        {% for err in field.errors %}
-        <h2>{{ err }}</h2>
-        {% endfor %}
-    </div>
-    {% endfor %}
-    <input type="submit">
+    {{ form.as_p }}
+    {% if button_name %}
+        <input type="submit" class="btn btn-primary btn-user btn-block" value="{{ button_name }}">
+    {% else %}
+        <input type="submit" class="btn btn-primary btn-user btn-block" value="Сохранить">
+    {% endif %}
 </form>

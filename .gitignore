@@ -4,3 +4,4 @@ __pycache__
 workspace.code-workspace
 .DS_Store
 geekshop_project/.DS_Store
+.env

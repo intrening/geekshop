@@ -1,1 +1,2 @@
-GeekShop
+##GeekShop
+Учебный проект 

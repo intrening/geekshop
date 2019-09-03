@@ -1,31 +1,29 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
-from .forms import (
-    LoginForm,RegistrationForm
-)
 from django.contrib.auth.views import (
     LoginView, LogoutView, FormView
 )
 
-class authLoginView(LoginView):
+from .forms import (
+    LoginForm, RegistrationForm
+)
+
+class AuthLoginView(LoginView):
     template_name = 'authapp/login.html'
 
-class authLogoutView(LogoutView):
+class AuthLogoutView(LogoutView):
     template_name = 'authapp/logout.html'
-    
-class authRegistrationView(FormView):
+
+class AuthRegistrationView(FormView):
     template_name = 'authapp/registration.html'
     form_class = RegistrationForm
-
-
-# Create your views here.
 
 def login_view(request):
     form = LoginForm()
     success_url = reverse('authapp:login')
     if request.method == 'POST':
-        form = LoginForm (data=request.POST)
+        form = LoginForm(data=request.POST)
         if form.is_valid:
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -36,7 +34,7 @@ def login_view(request):
             )
             if user and user.is_active:
                 login(request, user)
-                return redirect (success_url)
+                return redirect(success_url)
     return render(
         request, 'authapp/login.html', {
             'form': form
