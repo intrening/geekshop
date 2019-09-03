@@ -4,3 +4,4 @@ autopep8==1.4.4
 ipython==7.5.0
 Django==2.2.4
 Pillow==6.0.0
+django-debug-toolbar=2.0
