@@ -1,15 +1,19 @@
 {% extends "mainapp/base.html" %}
 {% load staticfiles %}
 {% block content %}
+
+{% load category_filter %}
+
 <div class="content">
     <a href="{% url 'category:add' %}">Добавить категорию</a>
     <hr>
     <h1>Категории</h1>
+    Текущее время: {% current_time %}
     <div class="category-list">
         {% for category in object_list %}
             <h3>{{ category.name }}</h3>
             <p>
-                {{ category.description }}
+                {{ category.description|about }}
             </p>
             <a href='{% url "category:detail" pk=category.id %}'>Перейти</a>
         {% endfor %}
